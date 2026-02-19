@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Velora – Orders &amp; Products management dashboard.">
+    <title>Orders &amp; Products – Arshad Ali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div id="profileDropdown" class="profile-dropdown" style="position:fixed;top:70px;right:16px;">
+        <div class="dropdown-header">
+            <div class="fw-600" style="font-size:0.88rem;color:var(--text-primary)">Arshad Ali</div>
+        </div>
+        <div class="dropdown-item"><i class="fa fa-user" style="width:15px"></i> My Profile</div>
+        <div class="dropdown-item danger"><i class="fa fa-sign-out-alt" style="width:15px"></i> Sign Out</div>
+    </div>
+    <div id="notifPanel" class="notif-panel" style="position:fixed;top:70px;right:80px;">
+        <div class="notif-header"><span class="notif-header-title">Notifications</span></div>
+        <div class="notif-item">
+            <div class="notif-dot-mk"></div>
+            <div>
+                <div class="notif-text">24 new orders require review</div>
+                <div class="notif-time">Just now</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-shell" id="appShell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <div class="brand-text">
+                    <div class="brand-name">Arshad</div>
+                    <div class="brand-tagline">Analytics Suite</div>
+                </div>
+            </div>
+            <div class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-chevron-left"></i></div>
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Main Menu</div>
+                <a href="../index.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-th-large"></i></span><span class="nav-label">Overview</span></a>
+                <a href="revenue.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-chart-area"></i></span><span class="nav-label">Revenue Analytics</span></a>
+                <a href="orders.html" class="nav-item active"><span class="nav-icon"><i
+                            class="fa fa-shopping-cart"></i></span><span class="nav-label">Orders &amp;
+                        Products</span><span class="nav-badge">24</span></a>
+                <a href="customers.html" class="nav-item"><span class="nav-icon"><i class="fa fa-users"></i></span><span
+                        class="nav-label">Customers</span></a>
+                <a href="conversion.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-filter"></i></span><span class="nav-label">Conversion Insights</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Operations</div>
+                <a href="inventory.html" class="nav-item"><span class="nav-icon"><i class="fa fa-boxes"></i></span><span
+                        class="nav-label">Inventory Control</span><span class="nav-badge"
+                        style="background:var(--danger);color:#fff">3</span></a>
+                <a href="marketing.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-bullhorn"></i></span><span class="nav-label">Marketing &amp; Ads</span></a>
+                <a href="integrations.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-plug"></i></span><span class="nav-label">Integrations</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Account</div>
+                <a href="settings.html" class="nav-item"><span class="nav-icon"><i class="fa fa-cog"></i></span><span
+                        class="nav-label">Settings</span></a>
+                <a href="support.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-life-ring"></i></span><span class="nav-label">Support</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="nav-item" style="margin:0"><span class="nav-icon"><i class="fa fa-user-circle"
+                            style="font-size:1.3rem;color:var(--gold-dim)"></i></span>
+                    <div class="nav-label">
+                        <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary)">Arshad A.</div>
+                        <div style="font-size:0.7rem;color:var(--text-muted)">Admin</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="top-header">
+                <button id="mobileMenuBtn" class="icon-btn" style="display:none;border:none"><i
+                        class="fa fa-bars"></i></button>
+                <div class="header-search"><span class="search-icon"><i class="fa fa-search"></i></span><input
+                        type="text" placeholder="Search orders, SKU, customer…"></div>
+                <div class="header-spacer"></div>
+                <div class="header-actions">
+                    <button class="date-selector" id="dateSelector"><i class="fa fa-calendar-alt"
+                            style="color:var(--gold-dim)"></i><span class="date-label">Last 30 Days</span><i
+                            class="fa fa-chevron-down" style="font-size:0.7rem;opacity:0.5"></i></button>
+                    <div class="icon-btn" id="notifBtn" style="position:relative"><i class="fa fa-bell"></i><span
+                            class="notif-dot"></span></div>
+                    <div class="theme-toggle" id="themeToggle"><span class="theme-icon-label">🌙</span>
+                        <div class="toggle-track">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                    <div class="profile-btn" id="profileBtn" style="position:relative">
+                        <div class="profile-avatar">A</div>
+                        <div>
+                            <div class="profile-name">Arshad A.</div>
+                            <div class="profile-role">Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="page-header">
+                    <div class="breadcrumb"><span>Arshad</span><span class="breadcrumb-sep">/</span><span
+                            style="color:var(--gold-primary)">Orders &amp; Products</span></div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+                        <div>
+                            <h1 class="page-title">Orders &amp; Products</h1>
+                            <p class="page-subtitle">Manage and track all orders with real-time status</p>
+                        </div>
+                        <div class="filter-bar">
+                            <button class="btn btn-primary btn-sm" data-modal-open="newOrderModal"><i
+                                    class="fa fa-plus"></i> New Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPIs -->
+                <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px">
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(96,165,250,0.1)"><i
+                                    class="fa fa-shopping-bag" style="color:var(--info)"></i></div>
+                            <div class="kpi-badge up">+21%</div>
+                        </div>
+                        <div class="kpi-value">1,482</div>
+                        <div class="kpi-label">Orders Today</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(74,222,128,0.1)"><i
+                                    class="fa fa-check-circle" style="color:var(--success)"></i></div>
+                            <div class="kpi-badge up">+8%</div>
+                        </div>
+                        <div class="kpi-value">1,340</div>
+                        <div class="kpi-label">Fulfilled</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(251,191,36,0.1)"><i class="fa fa-clock"
+                                    style="color:var(--warning)"></i></div>
+                            <div class="kpi-badge down">+14</div>
+                        </div>
+                        <div class="kpi-value">118</div>
+                        <div class="kpi-label">Pending</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(248,113,113,0.1)"><i class="fa fa-undo"
+                                    style="color:var(--danger)"></i></div>
+                            <div class="kpi-badge down">+3</div>
+                        </div>
+                        <div class="kpi-value">24</div>
+                        <div class="kpi-label">Refunds</div>
+                    </div>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Recent Orders</div>
+                            <div class="card-subtitle">All orders from this period</div>
+                        </div>
+                        <div class="filter-bar">
+                            <select class="filter-select">
+                                <option>All Status</option>
+                                <option>Fulfilled</option>
+                                <option>Pending</option>
+                                <option>Refunded</option>
+                            </select>
+                            <select class="filter-select">
+                                <option>All Channels</option>
+                                <option>Shopify</option>
+                                <option>Direct</option>
+                            </select>
+                            <button class="btn btn-outline btn-sm"><i class="fa fa-download"></i> CSV</button>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table" id="ordersTable">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Channel</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10482</td>
+                                    <td>James Callahan</td>
+                                    <td>Feb 19, 2026</td>
+                                    <td>3</td>
+                                    <td>$342.80</td>
+                                    <td>Shopify</td>
+                                    <td><span class="badge badge-success">Fulfilled</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10481</td>
+                                    <td>Priya Sharma</td>
+                                    <td>Feb 19, 2026</td>
+                                    <td>1</td>
+                                    <td>$89.99</td>
+                                    <td>Direct</td>
+                                    <td><span class="badge badge-warning">Pending</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10480</td>
+                                    <td>Marcus Eldridge</td>
+                                    <td>Feb 18, 2026</td>
+                                    <td>5</td>
+                                    <td>$614.50</td>
+                                    <td>Shopify</td>
+                                    <td><span class="badge badge-success">Fulfilled</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10479</td>
+                                    <td>Anya Kovač</td>
+                                    <td>Feb 18, 2026</td>
+                                    <td>2</td>
+                                    <td>$198.00</td>
+                                    <td>Meta Ads</td>
+                                    <td><span class="badge badge-success">Fulfilled</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10478</td>
+                                    <td>Liam Wu</td>
+                                    <td>Feb 18, 2026</td>
+                                    <td>1</td>
+                                    <td>$54.99</td>
+                                    <td>Google</td>
+                                    <td><span class="badge badge-danger">Refunded</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10477</td>
+                                    <td>Chloe Beaumont</td>
+                                    <td>Feb 17, 2026</td>
+                                    <td>4</td>
+                                    <td>$488.20</td>
+                                    <td>Shopify</td>
+                                    <td><span class="badge badge-success">Fulfilled</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10476</td>
+                                    <td>Rafael Torres</td>
+                                    <td>Feb 17, 2026</td>
+                                    <td>2</td>
+                                    <td>$226.40</td>
+                                    <td>Direct</td>
+                                    <td><span class="badge badge-warning">Pending</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10475</td>
+                                    <td>Sophie Larkin</td>
+                                    <td>Feb 17, 2026</td>
+                                    <td>6</td>
+                                    <td>$782.00</td>
+                                    <td>Shopify</td>
+                                    <td><span class="badge badge-success">Fulfilled</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10474</td>
+                                    <td>Dev Patel</td>
+                                    <td>Feb 16, 2026</td>
+                                    <td>1</td>
+                                    <td>$124.00</td>
+                                    <td>Google</td>
+                                    <td><span class="badge badge-success">Fulfilled</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10473</td>
+                                    <td>Nora Kjellberg</td>
+                                    <td>Feb 16, 2026</td>
+                                    <td>3</td>
+                                    <td>$304.75</td>
+                                    <td>Meta Ads</td>
+                                    <td><span class="badge badge-warning">Pending</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10472</td>
+                                    <td>Ethan Blackwood</td>
+                                    <td>Feb 16, 2026</td>
+                                    <td>2</td>
+                                    <td>$168.50</td>
+                                    <td>Direct</td>
+                                    <td><span class="badge badge-success">Fulfilled</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600 text-gold">#VLR-10471</td>
+                                    <td>Isabelle Morin</td>
+                                    <td>Feb 15, 2026</td>
+                                    <td>4</td>
+                                    <td>$511.60</td>
+                                    <td>Shopify</td>
+                                    <td><span class="badge badge-danger">Refunded</span></td>
+                                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination" id="ordersTablePagination"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- New Order Modal -->
+    <div class="modal-overlay" id="newOrderModal">
+        <div class="modal">
+            <div class="modal-header"><span class="modal-title">Create New Order</span>
+                <div class="modal-close" data-modal-close="newOrderModal"><i class="fa fa-times"></i></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px">
+                <input type="text" placeholder="Customer name or email" class="filter-select"
+                    style="width:100%;padding:10px 14px">
+                <select class="filter-select" style="width:100%;padding:10px 14px">
+                    <option>Select product…</option>
+                    <option>Velocity X1</option>
+                    <option>EcoCore Pro</option>
+                    <option>LunaSet Ultra</option>
+                </select>
+                <select class="filter-select" style="width:100%;padding:10px 14px">
+                    <option>Shopify</option>
+                    <option>Direct</option>
+                    <option>Meta Ads</option>
+                </select>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:flex-end">
+                <button class="btn btn-outline" data-modal-close="newOrderModal">Cancel</button>
+                <button class="btn btn-primary"><i class="fa fa-check"></i> Create Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { window.VeloraApp?.initPagination('ordersTable', 8); });
+    </script>
+    <style>
+        @media(max-width:768px) {
+            #mobileMenuBtn {
+                display: flex !important
+            }
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Control – Arshad Ali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div id="profileDropdown" class="profile-dropdown" style="position:fixed;top:70px;right:16px;">
+        <div class="dropdown-header">
+            <div class="fw-600" style="font-size:0.88rem;color:var(--text-primary)">Arshad Ali</div>
+        </div>
+        <div class="dropdown-item danger"><i class="fa fa-sign-out-alt" style="width:15px"></i> Sign Out</div>
+    </div>
+    <div id="notifPanel" class="notif-panel" style="position:fixed;top:70px;right:80px;">
+        <div class="notif-header"><span class="notif-header-title">Notifications</span></div>
+        <div class="notif-item">
+            <div class="notif-dot-mk"></div>
+            <div>
+                <div class="notif-text">3 items critically low in stock</div>
+                <div class="notif-time">Now</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-shell" id="appShell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <div class="brand-text">
+                    <div class="brand-name">Arshad</div>
+                    <div class="brand-tagline">Analytics Suite</div>
+                </div>
+            </div>
+            <div class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-chevron-left"></i></div>
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Main Menu</div>
+                <a href="../index.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-th-large"></i></span><span class="nav-label">Overview</span></a>
+                <a href="revenue.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-chart-area"></i></span><span class="nav-label">Revenue Analytics</span></a>
+                <a href="orders.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-shopping-cart"></i></span><span class="nav-label">Orders &amp;
+                        Products</span><span class="nav-badge">24</span></a>
+                <a href="customers.html" class="nav-item"><span class="nav-icon"><i class="fa fa-users"></i></span><span
+                        class="nav-label">Customers</span></a>
+                <a href="conversion.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-filter"></i></span><span class="nav-label">Conversion Insights</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Operations</div>
+                <a href="inventory.html" class="nav-item active"><span class="nav-icon"><i
+                            class="fa fa-boxes"></i></span><span class="nav-label">Inventory Control</span><span
+                        class="nav-badge" style="background:var(--danger);color:#fff">3</span></a>
+                <a href="marketing.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-bullhorn"></i></span><span class="nav-label">Marketing &amp; Ads</span></a>
+                <a href="integrations.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-plug"></i></span><span class="nav-label">Integrations</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Account</div>
+                <a href="settings.html" class="nav-item"><span class="nav-icon"><i class="fa fa-cog"></i></span><span
+                        class="nav-label">Settings</span></a>
+                <a href="support.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-life-ring"></i></span><span class="nav-label">Support</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="nav-item" style="margin:0"><span class="nav-icon"><i class="fa fa-user-circle"
+                            style="font-size:1.3rem;color:var(--gold-dim)"></i></span>
+                    <div class="nav-label">
+                        <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary)">Arshad A.</div>
+                        <div style="font-size:0.7rem;color:var(--text-muted)">Admin</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="top-header">
+                <button id="mobileMenuBtn" class="icon-btn" style="display:none;border:none"><i
+                        class="fa fa-bars"></i></button>
+                <div class="header-search"><span class="search-icon"><i class="fa fa-search"></i></span><input
+                        type="text" placeholder="Search SKU, product…"></div>
+                <div class="header-spacer"></div>
+                <div class="header-actions">
+                    <button class="date-selector" id="dateSelector"><i class="fa fa-calendar-alt"
+                            style="color:var(--gold-dim)"></i><span class="date-label">Last 30 Days</span><i
+                            class="fa fa-chevron-down" style="font-size:0.7rem;opacity:0.5"></i></button>
+                    <div class="icon-btn" id="notifBtn" style="position:relative"><i class="fa fa-bell"></i><span
+                            class="notif-dot"></span></div>
+                    <div class="theme-toggle" id="themeToggle"><span class="theme-icon-label">🌙</span>
+                        <div class="toggle-track">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                    <div class="profile-btn" id="profileBtn" style="position:relative">
+                        <div class="profile-avatar">A</div>
+                        <div>
+                            <div class="profile-name">Arshad A.</div>
+                            <div class="profile-role">Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="page-header">
+                    <div class="breadcrumb"><span>Arshad</span><span class="breadcrumb-sep">/</span><span
+                            style="color:var(--gold-primary)">Inventory Control</span></div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+                        <div>
+                            <h1 class="page-title">Inventory Control</h1>
+                            <p class="page-subtitle">Monitor stock levels, turnover rates, and restock alerts</p>
+                        </div>
+                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Product</button>
+                    </div>
+                </div>
+
+                <!-- KPIs -->
+                <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px">
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(196,156,90,0.12)"><i class="fa fa-box"
+                                    style="color:var(--gold-primary)"></i></div>
+                            <div class="kpi-badge up">+2.4%</div>
+                        </div>
+                        <div class="kpi-value">4,820</div>
+                        <div class="kpi-label">Total SKUs</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(251,191,36,0.1)"><i
+                                    class="fa fa-exclamation-triangle" style="color:var(--warning)"></i></div>
+                            <div class="kpi-badge down">+5</div>
+                        </div>
+                        <div class="kpi-value">42</div>
+                        <div class="kpi-label">Low Stock Items</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(248,113,113,0.1)"><i
+                                    class="fa fa-times-circle" style="color:var(--danger)"></i></div>
+                            <div class="kpi-badge down">+2</div>
+                        </div>
+                        <div class="kpi-value">8</div>
+                        <div class="kpi-label">Critical / Out</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(74,222,128,0.1)"><i class="fa fa-sync"
+                                    style="color:var(--success)"></i></div>
+                            <div class="kpi-badge up">+0.4×</div>
+                        </div>
+                        <div class="kpi-value">4.7×</div>
+                        <div class="kpi-label">Turnover Rate</div>
+                    </div>
+                </div>
+
+                <!-- Alert Cards -->
+                <div class="grid-3 mb-28">
+                    <div class="alert-card critical"><span class="alert-icon">🔴</span>
+                        <div class="alert-content">
+                            <div class="alert-title">MaxPulse — Critical</div>
+                            <div class="alert-desc">8 units · Sells ~12/day · Restock: NOW</div>
+                        </div>
+                    </div>
+                    <div class="alert-card critical"><span class="alert-icon">🔴</span>
+                        <div class="alert-content">
+                            <div class="alert-title">NovaDock Pro — Critical</div>
+                            <div class="alert-desc">11 units · Sells ~8/day · Restock: 1 day</div>
+                        </div>
+                    </div>
+                    <div class="alert-card low"><span class="alert-icon">🟡</span>
+                        <div class="alert-content">
+                            <div class="alert-title">EcoCore Pro — Low</div>
+                            <div class="alert-desc">32 units · Sells ~7/day · Restock: 5 days</div>
+                        </div>
+                    </div>
+                    <div class="alert-card low"><span class="alert-icon">🟡</span>
+                        <div class="alert-content">
+                            <div class="alert-title">AeroFlow — Low</div>
+                            <div class="alert-desc">21 units · Sells ~4/day · Restock: 5 days</div>
+                        </div>
+                    </div>
+                    <div class="alert-card ok"><span class="alert-icon">🟢</span>
+                        <div class="alert-content">
+                            <div class="alert-title">Velocity X1 — In Stock</div>
+                            <div class="alert-desc">284 units · 24 days supply remaining</div>
+                        </div>
+                    </div>
+                    <div class="alert-card ok"><span class="alert-icon">🟢</span>
+                        <div class="alert-content">
+                            <div class="alert-title">BlossomKit — In Stock</div>
+                            <div class="alert-desc">510 units · 60+ days supply</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Turnover Chart + Table -->
+                <div class="grid-2 mb-28">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Inventory Turnover by Category</div>
+                        </div>
+                        <div id="invTurnover"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Restock Prediction</div>
+                            <div class="card-subtitle">AI-projected reorder dates</div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+                            <div
+                                style="padding:12px 14px;background:var(--bg-elevated);border-radius:10px;border-left:3px solid var(--danger)">
+                                <div style="display:flex;justify-content:space-between;align-items:center"><span
+                                        class="fw-600"
+                                        style="color:var(--text-primary);font-size:0.85rem">MaxPulse</span><span
+                                        class="badge badge-danger">Order Now</span></div>
+                                <div class="fs-xs text-muted mt-4">Reorder qty: 500 units · Lead time: 7 days</div>
+                                <div class="progress-bar-wrap" style="margin-top:8px">
+                                    <div class="progress-bar-fill" style="width:4%;background:var(--danger)"></div>
+                                </div>
+                            </div>
+                            <div
+                                style="padding:12px 14px;background:var(--bg-elevated);border-radius:10px;border-left:3px solid var(--warning)">
+                                <div style="display:flex;justify-content:space-between;align-items:center"><span
+                                        class="fw-600" style="color:var(--text-primary);font-size:0.85rem">EcoCore
+                                        Pro</span><span class="badge badge-warning">Order in 3 days</span></div>
+                                <div class="fs-xs text-muted mt-4">Reorder qty: 300 units · Lead time: 5 days</div>
+                                <div class="progress-bar-wrap" style="margin-top:8px">
+                                    <div class="progress-bar-fill" style="width:18%;background:var(--warning)"></div>
+                                </div>
+                            </div>
+                            <div
+                                style="padding:12px 14px;background:var(--bg-elevated);border-radius:10px;border-left:3px solid var(--gold-dim)">
+                                <div style="display:flex;justify-content:space-between;align-items:center"><span
+                                        class="fw-600"
+                                        style="color:var(--text-primary);font-size:0.85rem">AeroFlow</span><span
+                                        class="badge badge-warning">Order in 4 days</span></div>
+                                <div class="fs-xs text-muted mt-4">Reorder qty: 200 units · Lead time: 4 days</div>
+                                <div class="progress-bar-wrap" style="margin-top:8px">
+                                    <div class="progress-bar-fill" style="width:24%"></div>
+                                </div>
+                            </div>
+                            <div
+                                style="padding:12px 14px;background:var(--bg-elevated);border-radius:10px;border-left:3px solid var(--success)">
+                                <div style="display:flex;justify-content:space-between;align-items:center"><span
+                                        class="fw-600" style="color:var(--text-primary);font-size:0.85rem">Velocity
+                                        X1</span><span class="badge badge-success">24 days supply</span></div>
+                                <div class="fs-xs text-muted mt-4">Reorder qty: 1000 units · Lead time: 10 days</div>
+                                <div class="progress-bar-wrap" style="margin-top:8px">
+                                    <div class="progress-bar-fill" style="width:68%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Full Inventory</div>
+                        <div class="filter-bar"><select class="filter-select">
+                                <option>All Status</option>
+                                <option>In Stock</option>
+                                <option>Low</option>
+                                <option>Critical</option>
+                            </select><button class="btn btn-outline btn-sm"><i class="fa fa-download"></i>
+                                Export</button></div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table" id="inventoryTable">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>SKU</th>
+                                    <th>Category</th>
+                                    <th>In Stock</th>
+                                    <th>Daily Avg</th>
+                                    <th>Days Left</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-600">Velocity X1</td>
+                                    <td class="text-muted">SKU-0042</td>
+                                    <td>Electronics</td>
+                                    <td>284</td>
+                                    <td>11.8</td>
+                                    <td>24</td>
+                                    <td><span class="badge badge-success">In Stock</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600">EcoCore Pro</td>
+                                    <td class="text-muted">SKU-0078</td>
+                                    <td>Apparel</td>
+                                    <td>32</td>
+                                    <td>6.4</td>
+                                    <td>5</td>
+                                    <td><span class="badge badge-warning">Low</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Reorder</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600">LunaSet Ultra</td>
+                                    <td class="text-muted">SKU-0115</td>
+                                    <td>Home</td>
+                                    <td>178</td>
+                                    <td>7.2</td>
+                                    <td>24</td>
+                                    <td><span class="badge badge-success">In Stock</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600">MaxPulse</td>
+                                    <td class="text-muted">SKU-0203</td>
+                                    <td>Sports</td>
+                                    <td>8</td>
+                                    <td>12.1</td>
+                                    <td>1</td>
+                                    <td><span class="badge badge-danger">Critical</span></td>
+                                    <td><button class="btn btn-primary btn-sm">Reorder Now</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600">SwiftGlide</td>
+                                    <td class="text-muted">SKU-0267</td>
+                                    <td>Footwear</td>
+                                    <td>220</td>
+                                    <td>5.4</td>
+                                    <td>40</td>
+                                    <td><span class="badge badge-success">In Stock</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600">AeroFlow</td>
+                                    <td class="text-muted">SKU-0312</td>
+                                    <td>Electronics</td>
+                                    <td>21</td>
+                                    <td>4.2</td>
+                                    <td>5</td>
+                                    <td><span class="badge badge-warning">Low</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Reorder</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600">TitanEdge</td>
+                                    <td class="text-muted">SKU-0389</td>
+                                    <td>Tools</td>
+                                    <td>95</td>
+                                    <td>3.8</td>
+                                    <td>25</td>
+                                    <td><span class="badge badge-success">In Stock</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600">BlossomKit</td>
+                                    <td class="text-muted">SKU-0445</td>
+                                    <td>Beauty</td>
+                                    <td>510</td>
+                                    <td>8.5</td>
+                                    <td>60</td>
+                                    <td><span class="badge badge-success">In Stock</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-600">NovaDock Pro</td>
+                                    <td class="text-muted">SKU-0512</td>
+                                    <td>Electronics</td>
+                                    <td>11</td>
+                                    <td>7.8</td>
+                                    <td>1</td>
+                                    <td><span class="badge badge-danger">Critical</span></td>
+                                    <td><button class="btn btn-primary btn-sm">Reorder Now</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination" id="inventoryTablePagination"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const C = window.VeloraApp?.getChartColors() || {};
+            const el = document.getElementById('invTurnover');
+            if (el) new ApexCharts(el, {
+                chart: { type: 'bar', height: 280, toolbar: { show: false }, fontFamily: 'Inter,sans-serif' },
+                series: [{ name: 'Turnover Rate', data: [4.2, 3.8, 5.1, 4.6, 6.0, 5.4, 3.2] }],
+                colors: ['#4ade80'],
+                plotOptions: { bar: { borderRadius: 6, columnWidth: '50%', distributed: true } },
+                xaxis: { categories: ['Electronics', 'Apparel', 'Home', 'Beauty', 'Sports', 'Books', 'Toys'], labels: { style: { colors: Array(7).fill(C.textColor || '#a0a8c0'), fontSize: '10px' }, rotate: -20 }, axisBorder: { show: false }, axisTicks: { show: false } },
+                yaxis: { labels: { style: { colors: [C.textColor || '#a0a8c0'], fontSize: '11px' } } },
+                grid: { borderColor: C.gridColor || 'rgba(255,255,255,0.05)', strokeDashArray: 4 },
+                dataLabels: { enabled: false }, tooltip: { theme: 'dark' }, legend: { show: false },
+            }).render();
+            window.VeloraApp?.initPagination('inventoryTable', 6);
+        });
+    </script>
+    <style>
+        @media(max-width:768px) {
+            #mobileMenuBtn {
+                display: flex !important
+            }
+        }
+    </style>
+</body>
+
+</html>

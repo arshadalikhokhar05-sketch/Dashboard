@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Insights – Arshad Ali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div id="profileDropdown" class="profile-dropdown" style="position:fixed;top:70px;right:16px;">
+        <div class="dropdown-header">
+            <div class="fw-600" style="font-size:0.88rem;color:var(--text-primary)">Arshad Ali</div>
+        </div>
+        <div class="dropdown-item danger"><i class="fa fa-sign-out-alt" style="width:15px"></i> Sign Out</div>
+    </div>
+    <div id="notifPanel" class="notif-panel" style="position:fixed;top:70px;right:80px;">
+        <div class="notif-header"><span class="notif-header-title">Notifications</span></div>
+    </div>
+
+    <div class="app-shell" id="appShell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <div class="brand-text">
+                    <div class="brand-name">Arshad</div>
+                    <div class="brand-tagline">Analytics Suite</div>
+                </div>
+            </div>
+            <div class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-chevron-left"></i></div>
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Main Menu</div>
+                <a href="../index.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-th-large"></i></span><span class="nav-label">Overview</span></a>
+                <a href="revenue.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-chart-area"></i></span><span class="nav-label">Revenue Analytics</span></a>
+                <a href="orders.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-shopping-cart"></i></span><span class="nav-label">Orders &amp;
+                        Products</span><span class="nav-badge">24</span></a>
+                <a href="customers.html" class="nav-item"><span class="nav-icon"><i class="fa fa-users"></i></span><span
+                        class="nav-label">Customers</span></a>
+                <a href="conversion.html" class="nav-item active"><span class="nav-icon"><i
+                            class="fa fa-filter"></i></span><span class="nav-label">Conversion Insights</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Operations</div>
+                <a href="inventory.html" class="nav-item"><span class="nav-icon"><i class="fa fa-boxes"></i></span><span
+                        class="nav-label">Inventory Control</span><span class="nav-badge"
+                        style="background:var(--danger);color:#fff">3</span></a>
+                <a href="marketing.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-bullhorn"></i></span><span class="nav-label">Marketing &amp; Ads</span></a>
+                <a href="integrations.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-plug"></i></span><span class="nav-label">Integrations</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Account</div>
+                <a href="settings.html" class="nav-item"><span class="nav-icon"><i class="fa fa-cog"></i></span><span
+                        class="nav-label">Settings</span></a>
+                <a href="support.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-life-ring"></i></span><span class="nav-label">Support</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="nav-item" style="margin:0"><span class="nav-icon"><i class="fa fa-user-circle"
+                            style="font-size:1.3rem;color:var(--gold-dim)"></i></span>
+                    <div class="nav-label">
+                        <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary)">Arshad A.</div>
+                        <div style="font-size:0.7rem;color:var(--text-muted)">Admin</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="top-header">
+                <button id="mobileMenuBtn" class="icon-btn" style="display:none;border:none"><i
+                        class="fa fa-bars"></i></button>
+                <div class="header-search"><span class="search-icon"><i class="fa fa-search"></i></span><input
+                        type="text" placeholder="Search…"></div>
+                <div class="header-spacer"></div>
+                <div class="header-actions">
+                    <button class="date-selector" id="dateSelector"><i class="fa fa-calendar-alt"
+                            style="color:var(--gold-dim)"></i><span class="date-label">Last 30 Days</span><i
+                            class="fa fa-chevron-down" style="font-size:0.7rem;opacity:0.5"></i></button>
+                    <div class="icon-btn" id="notifBtn" style="position:relative"><i class="fa fa-bell"></i><span
+                            class="notif-dot"></span></div>
+                    <div class="theme-toggle" id="themeToggle"><span class="theme-icon-label">🌙</span>
+                        <div class="toggle-track">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                    <div class="profile-btn" id="profileBtn" style="position:relative">
+                        <div class="profile-avatar">A</div>
+                        <div>
+                            <div class="profile-name">Arshad.</div>
+                            <div class="profile-role">Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="page-header">
+                    <div class="breadcrumb"><span>Arshad</span><span class="breadcrumb-sep">/</span><span
+                            style="color:var(--gold-primary)">Conversion Insights</span></div>
+                    <div>
+                        <h1 class="page-title">Conversion Journey</h1>
+                        <p class="page-subtitle">Visualize your shopper's path from visit to purchase</p>
+                    </div>
+                </div>
+
+                <!-- KPIs -->
+                <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px">
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(196,156,90,0.12)"><i
+                                    class="fa fa-percentage" style="color:var(--gold-primary)"></i></div>
+                            <div class="kpi-badge down">−0.3%</div>
+                        </div>
+                        <div class="kpi-value">3.91%</div>
+                        <div class="kpi-label">Overall Conversion</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(74,222,128,0.1)"><i
+                                    class="fa fa-shopping-cart" style="color:var(--success)"></i></div>
+                            <div class="kpi-badge up">+2.1%</div>
+                        </div>
+                        <div class="kpi-value">29.4%</div>
+                        <div class="kpi-label">Add-to-Cart Rate</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(248,113,113,0.1)"><i
+                                    class="fa fa-door-open" style="color:var(--danger)"></i></div>
+                            <div class="kpi-badge down">+1.2%</div>
+                        </div>
+                        <div class="kpi-value">68.4%</div>
+                        <div class="kpi-label">Cart Abandonment</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(96,165,250,0.1)"><i class="fa fa-undo"
+                                    style="color:var(--info)"></i></div>
+                            <div class="kpi-badge up">+4.5%</div>
+                        </div>
+                        <div class="kpi-value">24.1%</div>
+                        <div class="kpi-label">Recovery Rate</div>
+                    </div>
+                </div>
+
+                <div class="grid-2 mb-28">
+                    <!-- Funnel -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Purchase Funnel</div>
+                                <div class="card-subtitle">Traffic to purchase drop-off analysis</div>
+                            </div><span class="badge badge-gold">Overall 3.91%</span>
+                        </div>
+                        <div class="funnel-container">
+                            <div class="funnel-step">
+                                <div class="funnel-bar-wrap"><span class="funnel-label">Traffic</span>
+                                    <div class="funnel-track">
+                                        <div class="funnel-fill" data-width="100%"
+                                            style="background:linear-gradient(90deg,#c49c5a,#d4b070)"><span
+                                                class="funnel-count">213,450</span></div>
+                                    </div><span class="funnel-meta">100%</span>
+                                </div>
+                            </div>
+                            <div class="funnel-drop">▼ 38.2% bounced</div>
+                            <div class="funnel-step">
+                                <div class="funnel-bar-wrap"><span class="funnel-label">Product Views</span>
+                                    <div class="funnel-track">
+                                        <div class="funnel-fill" data-width="61.8%"
+                                            style="background:linear-gradient(90deg,#60a5fa,#93c5fd)"><span
+                                                class="funnel-count">131,944</span></div>
+                                    </div><span class="funnel-meta">61.8%</span>
+                                </div>
+                            </div>
+                            <div class="funnel-drop">▼ 52.4% left</div>
+                            <div class="funnel-step">
+                                <div class="funnel-bar-wrap"><span class="funnel-label">Add to Cart</span>
+                                    <div class="funnel-track">
+                                        <div class="funnel-fill" data-width="29.4%"
+                                            style="background:linear-gradient(90deg,#4ade80,#86efac)"><span
+                                                class="funnel-count">62,786</span></div>
+                                    </div><span class="funnel-meta">29.4%</span>
+                                </div>
+                            </div>
+                            <div class="funnel-drop">▼ 64.1% abandoned</div>
+                            <div class="funnel-step">
+                                <div class="funnel-bar-wrap"><span class="funnel-label">Checkout</span>
+                                    <div class="funnel-track">
+                                        <div class="funnel-fill" data-width="10.5%"
+                                            style="background:linear-gradient(90deg,#a78bfa,#c4b5fd)"><span
+                                                class="funnel-count">22,412</span></div>
+                                    </div><span class="funnel-meta">10.5%</span>
+                                </div>
+                            </div>
+                            <div class="funnel-drop">▼ 62.7% exited</div>
+                            <div class="funnel-step">
+                                <div class="funnel-bar-wrap"><span class="funnel-label">Purchase ✓</span>
+                                    <div class="funnel-track">
+                                        <div class="funnel-fill" data-width="3.91%"
+                                            style="background:linear-gradient(90deg,#f472b6,#f9a8d4)"><span
+                                                class="funnel-count">8,344</span></div>
+                                    </div><span class="funnel-meta text-gold fw-600">3.91%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conversion Trend -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Conversion Rate Trend</div>
+                        </div>
+                        <div id="convTrend"></div>
+                        <div style="margin-top:20px">
+                            <div class="section-title fs-sm" style="margin-bottom:12px">By Device Type</div>
+                            <div class="channel-list">
+                                <div class="channel-row"><span class="channel-name">Desktop</span>
+                                    <div class="channel-track">
+                                        <div class="channel-fill" style="width:58%;background:var(--gold-primary)">
+                                        </div>
+                                    </div><span class="channel-pct">4.8%</span>
+                                </div>
+                                <div class="channel-row"><span class="channel-name">Mobile</span>
+                                    <div class="channel-track">
+                                        <div class="channel-fill" style="width:32%;background:var(--info)"></div>
+                                    </div><span class="channel-pct">3.1%</span>
+                                </div>
+                                <div class="channel-row"><span class="channel-name">Tablet</span>
+                                    <div class="channel-track">
+                                        <div class="channel-fill" style="width:40%;background:var(--success)"></div>
+                                    </div><span class="channel-pct">3.9%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Abandoned Cart -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Cart Abandonment Analysis</div>
+                    </div>
+                    <div class="grid-3" style="margin-bottom:20px">
+                        <div style="text-align:center;padding:18px;background:var(--bg-elevated);border-radius:12px">
+                            <div style="font-size:2rem;font-weight:700;color:var(--danger)">68.4%</div>
+                            <div class="fs-xs text-muted mt-4">Avg. Abandonment Rate</div>
+                            <div class="fs-xs text-muted">(Industry avg: 70.2%)</div>
+                        </div>
+                        <div style="text-align:center;padding:18px;background:var(--bg-elevated);border-radius:12px">
+                            <div style="font-size:2rem;font-weight:700;color:var(--success)">24.1%</div>
+                            <div class="fs-xs text-muted mt-4">Email Recovery Rate</div>
+                            <div class="fs-xs" style="color:var(--success);margin-top:2px">↑ +4.5% vs last month</div>
+                        </div>
+                        <div style="text-align:center;padding:18px;background:var(--bg-elevated);border-radius:12px">
+                            <div style="font-size:2rem;font-weight:700;color:var(--warning)">$41,240</div>
+                            <div class="fs-xs text-muted mt-4">Estimated Lost Revenue</div>
+                            <div class="fs-xs text-muted">This month</div>
+                        </div>
+                    </div>
+                    <div id="convCartChart"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const C = window.VeloraApp?.getChartColors() || {};
+            const el1 = document.getElementById('convTrend');
+            if (el1) new ApexCharts(el1, {
+                chart: { type: 'line', height: 220, toolbar: { show: false }, fontFamily: 'Inter,sans-serif' },
+                series: [{ name: 'Conversion Rate', data: [3.2, 3.5, 3.1, 3.8, 3.6, 4.0, 3.7, 4.2, 3.9, 4.3, 4.0, 3.91] }],
+                colors: ['#c49c5a'], stroke: { curve: 'smooth', width: 2.5 },
+                fill: { type: 'gradient', gradient: { opacityFrom: 0.2, opacityTo: 0.0 } },
+                xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], labels: { style: { colors: Array(12).fill(C.textColor || '#a0a8c0'), fontSize: '10px' } }, axisBorder: { show: false }, axisTicks: { show: false } },
+                yaxis: { labels: { style: { colors: [C.textColor || '#a0a8c0'], fontSize: '11px' }, formatter: (v) => v + '%' } },
+                grid: { borderColor: C.gridColor || 'rgba(255,255,255,0.05)', strokeDashArray: 4 },
+                dataLabels: { enabled: false }, tooltip: { theme: 'dark', y: { formatter: (v) => v + '%' } },
+            }).render();
+
+            const el2 = document.getElementById('convCartChart');
+            if (el2) new ApexCharts(el2, {
+                chart: { type: 'area', height: 200, toolbar: { show: false }, fontFamily: 'Inter,sans-serif' },
+                series: [{ name: 'Abandonment Rate', data: [72, 68, 70, 74, 66, 71, 65, 69, 62, 67, 60, 68] }],
+                colors: ['#f87171'], stroke: { curve: 'smooth', width: 2 },
+                fill: { type: 'gradient', gradient: { opacityFrom: 0.3, opacityTo: 0.0 } },
+                xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], labels: { style: { colors: Array(12).fill(C.textColor || '#a0a8c0'), fontSize: '10px' } }, axisBorder: { show: false }, axisTicks: { show: false } },
+                yaxis: { labels: { style: { colors: [C.textColor || '#a0a8c0'], fontSize: '11px' }, formatter: (v) => v + '%' } },
+                grid: { borderColor: C.gridColor || 'rgba(255,255,255,0.05)', strokeDashArray: 4 },
+                dataLabels: { enabled: false }, tooltip: { theme: 'dark', y: { formatter: (v) => v + '%' } },
+            }).render();
+            window.VeloraApp?.animateFunnel();
+        });
+    </script>
+    <style>
+        @media(max-width:768px) {
+            #mobileMenuBtn {
+                display: flex !important
+            }
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers – Arshad Ali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div id="profileDropdown" class="profile-dropdown" style="position:fixed;top:70px;right:16px;">
+        <div class="dropdown-header">
+            <div class="fw-600" style="font-size:0.88rem;color:var(--text-primary)">Arshad Ali</div>
+        </div>
+        <div class="dropdown-item danger"><i class="fa fa-sign-out-alt" style="width:15px"></i> Sign Out</div>
+    </div>
+    <div id="notifPanel" class="notif-panel" style="position:fixed;top:70px;right:80px;">
+        <div class="notif-header"><span class="notif-header-title">Notifications</span></div>
+    </div>
+
+    <div class="app-shell" id="appShell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <div class="brand-text">
+                    <div class="brand-name">Arshad</div>
+                    <div class="brand-tagline">Analytics Suite</div>
+                </div>
+            </div>
+            <div class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-chevron-left"></i></div>
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Main Menu</div>
+                <a href="../index.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-th-large"></i></span><span class="nav-label">Overview</span></a>
+                <a href="revenue.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-chart-area"></i></span><span class="nav-label">Revenue Analytics</span></a>
+                <a href="orders.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-shopping-cart"></i></span><span class="nav-label">Orders &amp;
+                        Products</span><span class="nav-badge">24</span></a>
+                <a href="customers.html" class="nav-item active"><span class="nav-icon"><i
+                            class="fa fa-users"></i></span><span class="nav-label">Customers</span></a>
+                <a href="conversion.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-filter"></i></span><span class="nav-label">Conversion Insights</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Operations</div>
+                <a href="inventory.html" class="nav-item"><span class="nav-icon"><i class="fa fa-boxes"></i></span><span
+                        class="nav-label">Inventory Control</span><span class="nav-badge"
+                        style="background:var(--danger);color:#fff">3</span></a>
+                <a href="marketing.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-bullhorn"></i></span><span class="nav-label">Marketing &amp; Ads</span></a>
+                <a href="integrations.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-plug"></i></span><span class="nav-label">Integrations</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Account</div>
+                <a href="settings.html" class="nav-item"><span class="nav-icon"><i class="fa fa-cog"></i></span><span
+                        class="nav-label">Settings</span></a>
+                <a href="support.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-life-ring"></i></span><span class="nav-label">Support</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="nav-item" style="margin:0"><span class="nav-icon"><i class="fa fa-user-circle"
+                            style="font-size:1.3rem;color:var(--gold-dim)"></i></span>
+                    <div class="nav-label">
+                        <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary)">Arshad A.</div>
+                        <div style="font-size:0.7rem;color:var(--text-muted)">Admin</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="top-header">
+                <button id="mobileMenuBtn" class="icon-btn" style="display:none;border:none"><i
+                        class="fa fa-bars"></i></button>
+                <div class="header-search"><span class="search-icon"><i class="fa fa-search"></i></span><input
+                        type="text" placeholder="Search customers…"></div>
+                <div class="header-spacer"></div>
+                <div class="header-actions">
+                    <button class="date-selector" id="dateSelector"><i class="fa fa-calendar-alt"
+                            style="color:var(--gold-dim)"></i><span class="date-label">Last 30 Days</span><i
+                            class="fa fa-chevron-down" style="font-size:0.7rem;opacity:0.5"></i></button>
+                    <div class="icon-btn" id="notifBtn" style="position:relative"><i class="fa fa-bell"></i><span
+                            class="notif-dot"></span></div>
+                    <div class="theme-toggle" id="themeToggle"><span class="theme-icon-label">🌙</span>
+                        <div class="toggle-track">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                    <div class="profile-btn" id="profileBtn" style="position:relative">
+                        <div class="profile-avatar">A</div>
+                        <div>
+                            <div class="profile-name">Arshad A.</div>
+                            <div class="profile-role">Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="page-header">
+                    <div class="breadcrumb"><span>Arshad</span><span class="breadcrumb-sep">/</span><span
+                            style="color:var(--gold-primary)">Customers</span></div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+                        <div>
+                            <h1 class="page-title">Customer Insights</h1>
+                            <p class="page-subtitle">Understand your audience and lifecycle metrics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPIs -->
+                <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px">
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(196,156,90,0.12)"><i class="fa fa-users"
+                                    style="color:var(--gold-primary)"></i></div>
+                            <div class="kpi-badge up">+9.4%</div>
+                        </div>
+                        <div class="kpi-value">14,280</div>
+                        <div class="kpi-label">Total Customers</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(74,222,128,0.1)"><i
+                                    class="fa fa-user-plus" style="color:var(--success)"></i></div>
+                            <div class="kpi-badge up">+14.2%</div>
+                        </div>
+                        <div class="kpi-value">482</div>
+                        <div class="kpi-label">New This Month</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(96,165,250,0.1)"><i class="fa fa-heart"
+                                    style="color:var(--info)"></i></div>
+                            <div class="kpi-badge up">+6.2%</div>
+                        </div>
+                        <div class="kpi-value">$384.60</div>
+                        <div class="kpi-label">Avg. LTV</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-top">
+                            <div class="kpi-icon-wrap" style="background:rgba(248,113,113,0.1)"><i
+                                    class="fa fa-user-times" style="color:var(--danger)"></i></div>
+                            <div class="kpi-badge down">+0.3%</div>
+                        </div>
+                        <div class="kpi-value">8.7%</div>
+                        <div class="kpi-label">Churn Risk (30d)</div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="grid-2 mb-28">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">New vs Returning Customers</div>
+                        </div>
+                        <div id="custDonut" style="display:flex;justify-content:center"></div>
+                        <div style="display:flex;justify-content:center;gap:24px;margin-top:12px">
+                            <div style="text-align:center">
+                                <div class="fs-xs text-muted">Returning</div>
+                                <div class="fw-600" style="color:var(--gold-primary)">62%</div>
+                            </div>
+                            <div style="text-align:center">
+                                <div class="fs-xs text-muted">New</div>
+                                <div class="fw-600" style="color:var(--info)">38%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Geographic Distribution</div>
+                        </div>
+                        <div class="geo-map-placeholder" style="height:220px"><span
+                                class="map-icon">🗺️</span><span>World Map Placeholder</span></div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px">
+                            <div
+                                style="display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 10px;background:var(--bg-elevated);border-radius:8px">
+                                <span>🇺🇸 United States</span><span class="fw-600 text-gold">38%</span></div>
+                            <div
+                                style="display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 10px;background:var(--bg-elevated);border-radius:8px">
+                                <span>🇬🇧 United Kingdom</span><span class="fw-600 text-gold">14%</span></div>
+                            <div
+                                style="display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 10px;background:var(--bg-elevated);border-radius:8px">
+                                <span>🇩🇪 Germany</span><span class="fw-600 text-gold">11%</span></div>
+                            <div
+                                style="display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 10px;background:var(--bg-elevated);border-radius:8px">
+                                <span>🇦🇺 Australia</span><span class="fw-600 text-gold">9%</span></div>
+                            <div
+                                style="display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 10px;background:var(--bg-elevated);border-radius:8px">
+                                <span>🇨🇦 Canada</span><span class="fw-600 text-gold">8%</span></div>
+                            <div
+                                style="display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 10px;background:var(--bg-elevated);border-radius:8px">
+                                <span>🌍 Others</span><span class="fw-600 text-gold">20%</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer segmentation table -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Customer Segmentation</div>
+                        <div class="filter-bar"><select class="filter-select">
+                                <option>All Segments</option>
+                                <option>High-Value</option>
+                                <option>At-Risk</option>
+                                <option>New</option>
+                            </select></div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table" id="customersTable">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Segment</th>
+                                    <th>Orders</th>
+                                    <th>LTV</th>
+                                    <th>Last Purchase</th>
+                                    <th>Location</th>
+                                    <th>Churn Risk</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:9px">
+                                            <div
+                                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#c49c5a,#9a7a42);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#0e1016">
+                                                JC</div>James Callahan
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-gold">High-Value</span></td>
+                                    <td>28</td>
+                                    <td class="text-gold fw-600">$2,840</td>
+                                    <td>Feb 19</td>
+                                    <td>🇺🇸 US</td>
+                                    <td><span class="badge badge-success">Low</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:9px">
+                                            <div
+                                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4ade80,#22c55e);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#0e1016">
+                                                PS</div>Priya Sharma
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-info">Loyal</span></td>
+                                    <td>15</td>
+                                    <td class="text-gold fw-600">$1,240</td>
+                                    <td>Feb 19</td>
+                                    <td>🇬🇧 UK</td>
+                                    <td><span class="badge badge-success">Low</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:9px">
+                                            <div
+                                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#60a5fa,#3b82f6);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#0e1016">
+                                                ME</div>Marcus Eldridge
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-gold">High-Value</span></td>
+                                    <td>42</td>
+                                    <td class="text-gold fw-600">$4,120</td>
+                                    <td>Feb 18</td>
+                                    <td>🇦🇺 AU</td>
+                                    <td><span class="badge badge-success">Low</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:9px">
+                                            <div
+                                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#f472b6,#ec4899);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#0e1016">
+                                                AK</div>Anya Kovač
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-warning">At-Risk</span></td>
+                                    <td>7</td>
+                                    <td class="text-gold fw-600">$640</td>
+                                    <td>Jan 28</td>
+                                    <td>🇩🇪 DE</td>
+                                    <td><span class="badge badge-danger">High</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:9px">
+                                            <div
+                                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#0e1016">
+                                                LW</div>Liam Wu
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-info">New</span></td>
+                                    <td>2</td>
+                                    <td class="text-gold fw-600">$144</td>
+                                    <td>Feb 18</td>
+                                    <td>🇨🇦 CA</td>
+                                    <td><span class="badge badge-warning">Medium</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:9px">
+                                            <div
+                                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#34d399,#10b981);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#0e1016">
+                                                CB</div>Chloe Beaumont
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-gold">High-Value</span></td>
+                                    <td>31</td>
+                                    <td class="text-gold fw-600">$3,410</td>
+                                    <td>Feb 17</td>
+                                    <td>🇫🇷 FR</td>
+                                    <td><span class="badge badge-success">Low</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:9px">
+                                            <div
+                                                style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#f59e0b);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#0e1016">
+                                                RT</div>Rafael Torres
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-warning">At-Risk</span></td>
+                                    <td>9</td>
+                                    <td class="text-gold fw-600">$780</td>
+                                    <td>Jan 15</td>
+                                    <td>🇪🇸 ES</td>
+                                    <td><span class="badge badge-danger">High</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination" id="customersTablePagination"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const C = window.VeloraApp?.getChartColors() || {};
+            const el = document.getElementById('custDonut');
+            if (el) new ApexCharts(el, {
+                chart: { type: 'donut', height: 220, fontFamily: 'Inter,sans-serif' },
+                series: [62, 38], labels: ['Returning', 'New'],
+                colors: ['#c49c5a', '#60a5fa'],
+                legend: { position: 'bottom', labels: { colors: C.textColor || '#a0a8c0' } },
+                plotOptions: { pie: { donut: { size: '70%', labels: { show: true, total: { show: true, label: 'Total', color: C.textColor || '#a0a8c0', formatter: () => '14.2k' } } } } },
+                dataLabels: { enabled: false }, stroke: { width: 0 }, tooltip: { theme: 'dark' },
+            }).render();
+            window.VeloraApp?.initPagination('customersTable', 5);
+        });
+    </script>
+    <style>
+        @media(max-width:768px) {
+            #mobileMenuBtn {
+                display: flex !important
+            }
+        }
+    </style>
+</body>
+
+</html>

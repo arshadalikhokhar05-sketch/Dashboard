@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings – Arshad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div id="profileDropdown" class="profile-dropdown" style="position:fixed;top:70px;right:16px;">
+        <div class="dropdown-header">
+            <div class="fw-600" style="font-size:0.88rem;color:var(--text-primary)">Arshad Ali</div>
+        </div>
+        <div class="dropdown-item danger"><i class="fa fa-sign-out-alt" style="width:15px"></i> Sign Out</div>
+    </div>
+    <div id="notifPanel" class="notif-panel" style="position:fixed;top:70px;right:80px;">
+        <div class="notif-header"><span class="notif-header-title">Notifications</span></div>
+    </div>
+
+    <div class="app-shell" id="appShell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <div class="brand-text">
+                    <div class="brand-name">Arshad</div>
+                    <div class="brand-tagline">Analytics Suite</div>
+                </div>
+            </div>
+            <div class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-chevron-left"></i></div>
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Main Menu</div>
+                <a href="../index.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-th-large"></i></span><span class="nav-label">Overview</span></a>
+                <a href="revenue.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-chart-area"></i></span><span class="nav-label">Revenue Analytics</span></a>
+                <a href="orders.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-shopping-cart"></i></span><span class="nav-label">Orders &amp;
+                        Products</span></a>
+                <a href="customers.html" class="nav-item"><span class="nav-icon"><i class="fa fa-users"></i></span><span
+                        class="nav-label">Customers</span></a>
+                <a href="conversion.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-filter"></i></span><span class="nav-label">Conversion Insights</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Operations</div>
+                <a href="inventory.html" class="nav-item"><span class="nav-icon"><i class="fa fa-boxes"></i></span><span
+                        class="nav-label">Inventory Control</span></a>
+                <a href="marketing.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-bullhorn"></i></span><span class="nav-label">Marketing &amp; Ads</span></a>
+                <a href="integrations.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-plug"></i></span><span class="nav-label">Integrations</span></a>
+                <div class="nav-section-label" style="margin-top:8px">Account</div>
+                <a href="settings.html" class="nav-item active"><span class="nav-icon"><i
+                            class="fa fa-cog"></i></span><span class="nav-label">Settings</span></a>
+                <a href="support.html" class="nav-item"><span class="nav-icon"><i
+                            class="fa fa-life-ring"></i></span><span class="nav-label">Support</span></a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="nav-item" style="margin:0"><span class="nav-icon"><i class="fa fa-user-circle"
+                            style="font-size:1.3rem;color:var(--gold-dim)"></i></span>
+                    <div class="nav-label">
+                        <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary)">Arshad A.</div>
+                        <div style="font-size:0.7rem;color:var(--text-muted)">Admin</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="top-header">
+                <button id="mobileMenuBtn" class="icon-btn" style="display:none;border:none"><i
+                        class="fa fa-bars"></i></button>
+                <div class="header-search"><span class="search-icon"><i class="fa fa-search"></i></span><input
+                        type="text" placeholder="Search settings…"></div>
+                <div class="header-spacer"></div>
+                <div class="header-actions">
+                    <div class="icon-btn" id="notifBtn" style="position:relative"><i class="fa fa-bell"></i></div>
+                    <div class="theme-toggle" id="themeToggle"><span class="theme-icon-label">🌙</span>
+                        <div class="toggle-track">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                    <div class="profile-btn" id="profileBtn" style="position:relative">
+                        <div class="profile-avatar">A</div>
+                        <div>
+                            <div class="profile-name">Arshad A.</div>
+                            <div class="profile-role">Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="page-header">
+                    <div class="breadcrumb"><span>Arshad</span><span class="breadcrumb-sep">/</span><span
+                            style="color:var(--gold-primary)">Settings</span></div>
+                    <div>
+                        <h1 class="page-title">Settings</h1>
+                        <p class="page-subtitle">Manage your account, preferences, and workspace</p>
+                    </div>
+                </div>
+
+                <div class="settings-layout">
+                    <!-- Sidebar Tabs -->
+                    <div class="settings-nav">
+                        <div class="settings-nav-item active" data-tab="profile"><i class="fa fa-user-circle"></i>
+                            Profile</div>
+                        <div class="settings-nav-item" data-tab="account"><i class="fa fa-building"></i> Organization
+                        </div>
+                        <div class="settings-nav-item" data-tab="notif"><i class="fa fa-bell"></i> Notifications</div>
+                        <div class="settings-nav-item" data-tab="security"><i class="fa fa-lock"></i> Security</div>
+                        <div class="settings-nav-item" data-tab="billing"><i class="fa fa-credit-card"></i> Billing
+                        </div>
+                        <div class="settings-nav-item" data-tab="appearance"><i class="fa fa-palette"></i> Appearance
+                        </div>
+                        <div class="settings-nav-item" data-tab="api"><i class="fa fa-key"></i> API Access</div>
+                    </div>
+
+                    <!-- Content Panels -->
+                    <div class="settings-content">
+                        <!-- Profile -->
+                        <div class="settings-panel active" id="tab-profile">
+                            <div class="settings-section-title">Profile Information</div>
+                            <div class="settings-avatar-row">
+                                <div class="settings-avatar">A</div>
+                                <div>
+                                    <button class="btn btn-outline btn-sm">Change Photo</button>
+                                    <div class="fs-xs text-muted" style="margin-top:5px">JPG, PNG or GIF. Max 2MB.</div>
+                                </div>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group"><label class="form-label">First Name</label><input
+                                        class="form-input" type="text" value="Arshad"></div>
+                                <div class="form-group"><label class="form-label">Last Name</label><input
+                                        class="form-input" type="text" value="ali"></div>
+                                <div class="form-group"><label class="form-label">Email</label><input class="form-input"
+                                        type="email" value="arshadali@gmail.com"></div>
+                                <div class="form-group"><label class="form-label">Role</label><select
+                                        class="form-input">
+                                        <option selected>Admin</option>
+                                        <option>Manager</option>
+                                        <option>Analyst</option>
+                                    </select></div>
+                                <div class="form-group" style="grid-column:1/-1"><label
+                                        class="form-label">Timezone</label><select class="form-input">
+                                        <option>Pak+02:00 - Pak</option>
+                                        <option>UTC+00:00 – London</option>
+                                        <option>UTC−05:00 – New York</option>
+                                        <option>UTC+01:00 – Paris</option>
+                                        
+                                    </select></div>
+                            </div>
+                            <div style="margin-top:20px"><button class="btn btn-primary"><i class="fa fa-save"></i> Save
+                                    Changes</button></div>
+                        </div>
+
+                        <!-- Notifications -->
+                        <div class="settings-panel" id="tab-notif">
+                            <div class="settings-section-title">Notification Preferences</div>
+                            <div style="display:flex;flex-direction:column;gap:16px">
+                                <div class="settings-toggle-row">
+                                    <div>
+                                        <div class="fw-500" style="font-size:0.9rem">Low stock alerts</div>
+                                        <div class="fs-xs text-muted">Notify when items fall below threshold</div>
+                                    </div><label class="switch"><input type="checkbox" checked><span
+                                            class="slider"></span></label>
+                                </div>
+                                <div class="settings-toggle-row">
+                                    <div>
+                                        <div class="fw-500" style="font-size:0.9rem">New order notifications</div>
+                                        <div class="fs-xs text-muted">Real-time alerts for incoming orders</div>
+                                    </div><label class="switch"><input type="checkbox" checked><span
+                                            class="slider"></span></label>
+                                </div>
+                                <div class="settings-toggle-row">
+                                    <div>
+                                        <div class="fw-500" style="font-size:0.9rem">Weekly performance digest</div>
+                                        <div class="fs-xs text-muted">Email summary every Monday</div>
+                                    </div><label class="switch"><input type="checkbox" checked><span
+                                            class="slider"></span></label>
+                                </div>
+                                <div class="settings-toggle-row">
+                                    <div>
+                                        <div class="fw-500" style="font-size:0.9rem">Refund requests</div>
+                                        <div class="fs-xs text-muted">Notify when a refund is submitted</div>
+                                    </div><label class="switch"><input type="checkbox"><span
+                                            class="slider"></span></label>
+                                </div>
+                                <div class="settings-toggle-row">
+                                    <div>
+                                        <div class="fw-500" style="font-size:0.9rem">Campaign performance alerts</div>
+                                        <div class="fs-xs text-muted">Notify on budget overspend or ROAS drop</div>
+                                    </div><label class="switch"><input type="checkbox" checked><span
+                                            class="slider"></span></label>
+                                </div>
+                            </div>
+                            <div style="margin-top:24px"><button class="btn btn-primary"><i class="fa fa-save"></i> Save
+                                    Preferences</button></div>
+                        </div>
+
+                        <!-- Security -->
+                        <div class="settings-panel" id="tab-security">
+                            <div class="settings-section-title">Security Settings</div>
+                            <div class="form-grid">
+                                <div class="form-group" style="grid-column:1/-1"><label class="form-label">Current
+                                        Password</label><input class="form-input" type="password"
+                                        placeholder="••••••••"></div>
+                                <div class="form-group"><label class="form-label">New Password</label><input
+                                        class="form-input" type="password" placeholder="••••••••"></div>
+                                <div class="form-group"><label class="form-label">Confirm Password</label><input
+                                        class="form-input" type="password" placeholder="••••••••"></div>
+                            </div>
+                            <div class="settings-section-title" style="margin-top:28px">Two-Factor Authentication</div>
+                            <div class="settings-toggle-row" style="margin-top:14px">
+                                <div>
+                                    <div class="fw-500" style="font-size:0.9rem">Enable 2FA</div>
+                                    <div class="fs-xs text-muted">Requires an authenticator app</div>
+                                </div><label class="switch"><input type="checkbox" checked><span
+                                        class="slider"></span></label>
+                            </div>
+                            <div style="margin-top:24px"><button class="btn btn-primary"><i class="fa fa-lock"></i>
+                                    Update Password</button></div>
+                        </div>
+
+                        <!-- Appearance -->
+                        <div class="settings-panel" id="tab-appearance">
+                            <div class="settings-section-title">Appearance</div>
+                            <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+                                <div class="theme-swatch active-swatch" style="background:#0e1016">
+                                    <div class="swatch-label">Dark (Default)</div>
+                                </div>
+                                <div class="theme-swatch" style="background:#f4f6fb;border:1px solid var(--border)">
+                                    <div class="swatch-label" style="color:#1a1a2e">Light</div>
+                                </div>
+                                <div class="theme-swatch" style="background:#161b22">
+                                    <div class="swatch-label">Void</div>
+                                </div>
+                                <div class="theme-swatch" style="background:#1c1c2e">
+                                    <div class="swatch-label">Midnight</div>
+                                </div>
+                            </div>
+                            <div class="settings-section-title">Accent Color</div>
+                            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px">
+                                <div
+                                    style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#c49c5a,#d4b070);border:3px solid var(--gold-primary);cursor:pointer">
+                                </div>
+                                <div
+                                    style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#60a5fa,#3b82f6);cursor:pointer;opacity:0.7">
+                                </div>
+                                <div
+                                    style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#4ade80,#22c55e);cursor:pointer;opacity:0.7">
+                                </div>
+                                <div
+                                    style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#f472b6,#ec4899);cursor:pointer;opacity:0.7">
+                                </div>
+                                <div
+                                    style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#8b5cf6);cursor:pointer;opacity:0.7">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- API -->
+                        <div class="settings-panel" id="tab-api">
+                            <div class="settings-section-title">API Keys</div>
+                            <div
+                                style="background:var(--bg-elevated);border-radius:12px;padding:16px;margin-bottom:16px">
+                                <div
+                                    style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+                                    <div>
+                                        <div class="fw-600" style="font-size:0.88rem;">Production Key</div>
+                                        <div class="fs-xs text-muted">vlr_prod_3f8ae12b9c4d57••••••••</div>
+                                    </div>
+                                    <div style="display:flex;gap:8px"><button class="btn btn-outline btn-sm"><i
+                                                class="fa fa-copy"></i> Copy</button><button
+                                            class="btn btn-outline btn-sm" style="color:var(--danger)"><i
+                                                class="fa fa-trash"></i></button></div>
+                                </div>
+                            </div>
+                            <div
+                                style="background:var(--bg-elevated);border-radius:12px;padding:16px;margin-bottom:16px">
+                                <div
+                                    style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+                                    <div>
+                                        <div class="fw-600" style="font-size:0.88rem;">Test Key</div>
+                                        <div class="fs-xs text-muted">vlr_test_9a7b33e4c12f88••••••••</div>
+                                    </div>
+                                    <div style="display:flex;gap:8px"><button class="btn btn-outline btn-sm"><i
+                                                class="fa fa-copy"></i> Copy</button></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Generate New Key</button>
+                        </div>
+
+                        <!-- Billing, Organization stubs -->
+                        <div class="settings-panel" id="tab-account">
+                            <div class="settings-section-title">Organization</div>
+                            <div class="form-grid">
+                                <div class="form-group"><label class="form-label">Company Name</label><input
+                                        class="form-input" type="text" value="Arshad Commerce Ltd."></div>
+                                <div class="form-group"><label class="form-label">VAT / Tax ID</label><input
+                                        class="form-input" type="text" value="NA54332312"></div>
+                                <div class="form-group"><label class="form-label">Industry</label><select
+                                        class="form-input">
+                                        <option>E-Commerce</option>
+                                        <option>Fashion</option>
+                                        <option>Electronics</option>
+                                    </select></div>
+                                <div class="form-group"><label class="form-label">Team Size</label><select
+                                        class="form-input">
+                                        <option>1–10</option>
+                                        <option>11–50</option>
+                                        <option selected>51–200</option>
+                                    </select></div>
+                            </div>
+                            <div style="margin-top:20px"><button class="btn btn-primary"><i class="fa fa-save"></i>
+                                    Save</button></div>
+                        </div>
+                        <div class="settings-panel" id="tab-billing">
+                            <div class="settings-section-title">Billing &amp; Plan</div>
+                            <div
+                                style="padding:24px;background:linear-gradient(135deg,rgba(196,156,90,0.12),rgba(196,156,90,0.04));border-radius:14px;border:1px solid rgba(196,156,90,0.25);margin-bottom:20px">
+                                <div
+                                    style="font-size:0.8rem;color:var(--gold-dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px">
+                                    Current Plan</div>
+                                <div
+                                    style="font-size:1.6rem;font-weight:700;color:var(--text-primary);margin-bottom:4px">
+                                    Pro <span style="color:var(--gold-primary)">$79</span><span
+                                        style="font-size:0.9rem;font-weight:400;color:var(--text-muted)">/month</span>
+                                </div>
+                                <div class="fs-xs text-muted">Renews March 1, 2026</div><button
+                                    class="btn btn-primary btn-sm" style="margin-top:12px">Upgrade to
+                                    Enterprise</button>
+                            </div>
+                            <div class="fs-xs text-muted">All invoices and billing history are available via the Stripe
+                                portal.</div>
+                            <div style="margin-top:12px"><button class="btn btn-outline btn-sm"><i
+                                        class="fa fa-external-link-alt"></i> Open Billing Portal</button></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.querySelectorAll('.settings-nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.settings-nav-item').forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.settings-panel').forEach(p => p.classList.remove('active'));
+                item.classList.add('active');
+                const id = 'tab-' + item.dataset.tab;
+                document.getElementById(id)?.classList.add('active');
+            });
+        });
+    </script>
+    <style>
+        @media(max-width:768px) {
+            #mobileMenuBtn {
+                display: flex !important
+            }
+        }
+
+        .settings-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 24px;
+            align-items: start
+        }
+
+        @media(max-width:900px) {
+            .settings-layout {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .settings-nav {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px
+        }
+
+        .settings-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            transition: all 0.2s
+        }
+
+        .settings-nav-item:hover {
+            background: var(--bg-elevated);
+            color: var(--text-primary)
+        }
+
+        .settings-nav-item.active {
+            background: rgba(196, 156, 90, 0.12);
+            color: var(--gold-primary);
+            font-weight: 600
+        }
+
+        .settings-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px
+        }
+
+        .settings-panel {
+            display: none
+        }
+
+        .settings-panel.active {
+            display: block
+        }
+
+        .settings-section-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .settings-avatar-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px
+        }
+
+        .settings-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c49c5a, #9a7a42);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0e1016;
+            flex-shrink: 0
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        @media(max-width:600px) {
+            .form-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .form-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary)
+        }
+
+        .form-input {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 13px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.88rem;
+            transition: border-color 0.2s
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold-dim)
+        }
+
+        .settings-toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px;
+            background: var(--bg-elevated);
+            border-radius: 12px
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: var(--border);
+            border-radius: 24px;
+            transition: .3s
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: .3s
+        }
+
+        input:checked+.slider {
+            background: var(--gold-primary)
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px)
+        }
+
+        .theme-swatch {
+            width: 80px;
+            height: 54px;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 6px;
+            border: 2px solid transparent;
+            transition: border-color 0.2s
+        }
+
+        .theme-swatch.active-swatch {
+            border-color: var(--gold-primary)
+        }
+
+        .swatch-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--gold-dim)
+        }
+    </style>
+</body>
+
+</html>

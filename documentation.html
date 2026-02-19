@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation – Velora Analytics Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root {
+            --doc-sidebar-w: 260px;
+        }
+
+        .doc-shell {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .doc-sidenav {
+            width: var(--doc-sidebar-w);
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            padding: 32px 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .doc-sidenav .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .doc-sidenav .brand-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #c49c5a, #9a7a42);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #0e1016;
+        }
+
+        .doc-sidenav .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .doc-nav-section {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 20px 0 8px;
+        }
+
+        .doc-nav-item {
+            display: block;
+            padding: 7px 12px;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.86rem;
+            text-decoration: none;
+            margin-bottom: 2px;
+            transition: all 0.15s;
+        }
+
+        .doc-nav-item:hover {
+            background: rgba(196, 156, 90, 0.08);
+            color: var(--text-primary);
+        }
+
+        .doc-nav-item.active {
+            background: rgba(196, 156, 90, 0.13);
+            color: var(--gold-primary);
+            font-weight: 600;
+        }
+
+        .doc-main {
+            flex: 1;
+            max-width: 900px;
+            padding: 48px 52px;
+            overflow-x: hidden;
+        }
+
+        @media(max-width: 900px) {
+            .doc-sidenav {
+                display: none;
+            }
+
+            .doc-main {
+                padding: 32px 24px;
+            }
+        }
+
+        .doc-hero {
+            margin-bottom: 48px;
+        }
+
+        .doc-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 12px;
+        }
+
+        .doc-hero p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .doc-badge-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .doc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+        }
+
+        .doc-section {
+            margin-bottom: 52px;
+            scroll-margin-top: 32px;
+        }
+
+        .doc-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 6px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .doc-section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin: 28px 0 10px;
+        }
+
+        .doc-section p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 0 0 14px;
+        }
+
+        .doc-section ul,
+        .doc-section ol {
+            padding-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 2;
+        }
+
+        .doc-code {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--gold-dim);
+            line-height: 1.7;
+            margin: 14px 0;
+            overflow-x: auto;
+        }
+
+        .doc-code .kw {
+            color: #60a5fa;
+        }
+
+        .doc-code .str {
+            color: #4ade80;
+        }
+
+        .doc-code .cm {
+            color: #6b7280;
+        }
+
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+        }
+
+        .doc-table th {
+            text-align: left;
+            padding: 10px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+        }
+
+        .doc-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .doc-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .doc-table code {
+            background: rgba(196, 156, 90, 0.1);
+            color: var(--gold-dim);
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .doc-alert {
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin: 14px 0;
+        }
+
+        .doc-alert.info {
+            background: rgba(96, 165, 250, 0.08);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            color: #93c5fd;
+        }
+
+        .doc-alert.warn {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            color: #fcd34d;
+        }
+
+        .doc-alert.tip {
+            background: rgba(74, 222, 128, 0.08);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            color: #86efac;
+        }
+
+        .doc-file-tree {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            line-height: 1.9;
+            color: var(--text-secondary);
+        }
+
+        .doc-file-tree .dir {
+            color: #60a5fa;
+        }
+
+        .doc-file-tree .file {
+            color: var(--text-secondary);
+        }
+
+        .doc-file-tree .gold {
+            color: var(--gold-dim);
+        }
+
+        .changelog-entry {
+            padding: 18px;
+            background: var(--bg-elevated);
+            border-radius: 12px;
+            border-left: 3px solid var(--gold-primary);
+            margin-bottom: 14px;
+        }
+
+        .changelog-version {
+            font-weight: 700;
+            color: var(--gold-primary);
+            font-size: 0.95rem;
+        }
+
+        .changelog-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-left: 8px;
+        }
+
+        .changelog-list {
+            margin: 8px 0 0;
+            padding-left: 18px;
+            color: var(--text-secondary);
+            font-size: 0.86rem;
+            line-height: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="doc-shell">
+        <!-- Doc Sidebar -->
+        <nav class="doc-sidenav">
+            <div class="brand">
+                <div class="brand-icon">V</div>
+                <div class="brand-name">Arshad Docs</div>
+            </div>
+            <div class="doc-nav-section">Getting Started</div>
+            <a class="doc-nav-item active" href="#introduction">Introduction</a>
+            <a class="doc-nav-item" href="#requirements">Requirements</a>
+            <a class="doc-nav-item" href="#structure">File Structure</a>
+            <a class="doc-nav-item" href="#quickstart">Quick Start</a>
+            <div class="doc-nav-section">Customization</div>
+            <a class="doc-nav-item" href="#colors">Colors &amp; Tokens</a>
+            <a class="doc-nav-item" href="#typography">Typography</a>
+            <a class="doc-nav-item" href="#themes">Dark / Light Mode</a>
+            <a class="doc-nav-item" href="#layout">Layout Grid</a>
+            <div class="doc-nav-section">Components</div>
+            <a class="doc-nav-item" href="#cards">Cards</a>
+            <a class="doc-nav-item" href="#charts">Charts (ApexCharts)</a>
+            <a class="doc-nav-item" href="#tables">Data Tables</a>
+            <a class="doc-nav-item" href="#modals">Modals</a>
+            <a class="doc-nav-item" href="#badges">Badges &amp; Alerts</a>
+            <div class="doc-nav-section">Pages</div>
+            <a class="doc-nav-item" href="#pages-list">Page Reference</a>
+            <div class="doc-nav-section">Support</div>
+            <a class="doc-nav-item" href="#credits">Credits</a>
+            <a class="doc-nav-item" href="#changelog">Changelog</a>
+            <div
+                style="margin-top:32px;padding:14px;background:rgba(196,156,90,0.08);border-radius:10px;font-size:0.8rem;color:var(--text-muted)">
+                <div style="font-weight:600;color:var(--gold-dim);margin-bottom:4px">Velora v1.0.0</div>
+                <div>Licensed for use on ThemeForest</div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="doc-main">
+            <div class="doc-hero">
+                <h1>Velora – Executive E-Commerce Analytics Suite</h1>
+                <p>A premium, fully responsive E-Commerce Intelligence Dashboard template. Modern dark-first design,
+                    multi-page architecture, ApexCharts integration, and clean customizable code — all ready to drop
+                    into your next project.</p>
+                <div class="doc-badge-row">
+                    <span class="doc-badge"><i class="fa fa-code" style="color:var(--gold-dim)"></i> HTML5 + CSS3</span>
+                    <span class="doc-badge"><i class="fa fa-chart-bar" style="color:var(--info)"></i> ApexCharts</span>
+                    <span class="doc-badge"><i class="fa fa-moon" style="color:var(--gold-dim)"></i> Dark / Light
+                        Mode</span>
+                    <span class="doc-badge"><i class="fa fa-mobile-alt" style="color:var(--success)"></i>
+                        Responsive</span>
+                    <span class="doc-badge"><i class="fa fa-tag"></i> v1.0.0</span>
+                </div>
+            </div>
+
+            <!-- Introduction -->
+            <div class="doc-section" id="introduction">
+                <h2>Introduction</h2>
+                <p>Velora is a data-driven executive dashboard template designed for <strong>online store owners,
+                        digital marketing agencies, and performance analysts</strong>. It ships with a complete set of
+                    pages covering every aspect of e-commerce intelligence.</p>
+                <div class="doc-alert info"><strong>ℹ️ No build step required.</strong> Everything runs directly in the
+                    browser with plain HTML, CSS, and Vanilla JS. CDN dependencies are loaded automatically.</div>
+                <h3>Key Features</h3>
+                <ul>
+                    <li>10 fully built HTML pages with consistent layout and navigation</li>
+                    <li>Dark-first design with a fully functional light-mode toggle</li>
+                    <li>16+ ApexCharts chart variants with realistic placeholder data</li>
+                    <li>Purchase funnel animation and animated progress bars</li>
+                    <li>Paginated data tables with filter controls</li>
+                    <li>Collapsible sidebar, sticky header, notification panel</li>
+                    <li>Modal popup system and Settings with tabbed navigation</li>
+                    <li>RTL-ready CSS variable architecture</li>
+                </ul>
+            </div>
+
+            <!-- Requirements -->
+            <div class="doc-section" id="requirements">
+                <h2>Requirements</h2>
+                <p>Velora is a zero-build static template. You only need:</p>
+                <ul>
+                    <li>A modern web browser (Chrome 100+, Firefox 100+, Safari 16+, Edge 100+)</li>
+                    <li>Internet connection (for CDN fonts, icons, and ApexCharts)</li>
+                    <li>Optional: any local web server or VS Code Live Server for development</li>
+                </ul>
+                <div class="doc-alert tip"><strong>💡 Tip:</strong> For local development, use the VS Code "Live Server"
+                    extension or <code>npx serve .</code> to avoid CORS issues when loading the JS modules.</div>
+                <h3>CDN Dependencies</h3>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Library</th>
+                            <th>Version</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ApexCharts</td>
+                            <td>3.44.0</td>
+                            <td>All charts and sparklines</td>
+                        </tr>
+                        <tr>
+                            <td>Font Awesome</td>
+                            <td>6.5.0</td>
+                            <td>Icon set</td>
+                        </tr>
+                        <tr>
+                            <td>Google Fonts – Inter</td>
+                            <td>latest</td>
+                            <td>Primary UI font</td>
+                        </tr>
+                        <tr>
+                            <td>Google Fonts – Playfair Display</td>
+                            <td>latest</td>
+                            <td>Display headings</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- File Structure -->
+            <div class="doc-section" id="structure">
+                <h2>File Structure</h2>
+                <div class="doc-file-tree">
+                    <span class="dir">Arshad-dashboard/</span>
+                    ├── <span class="gold">index.html</span> <span class="cm"># Overview / Main Dashboard</span>
+                    ├── <span class="dir">assets/</span>
+                    │ ├── <span class="dir">css/</span>
+                    │ │ └── <span class="gold">style.css</span> <span class="cm"># All styles, tokens &amp;
+                        themes</span>
+                    │ └── <span class="dir">js/</span>
+                    │ ├── <span class="gold">app.js</span> <span class="cm"># Core UI logic (sidebar, modals,
+                        pagination…)</span>
+                    │ └── <span class="gold">charts.js</span> <span class="cm"># ApexCharts initializations</span>
+                    └── <span class="dir">pages/</span>
+                    ├── <span class="file">revenue.html</span> <span class="cm"># Revenue Analytics</span>
+                    ├── <span class="file">orders.html</span> <span class="cm"># Orders &amp; Products</span>
+                    ├── <span class="file">customers.html</span> <span class="cm"># Customer Insights</span>
+                    ├── <span class="file">conversion.html</span> <span class="cm"># Conversion Journey</span>
+                    ├── <span class="file">inventory.html</span> <span class="cm"># Inventory Control</span>
+                    ├── <span class="file">marketing.html</span> <span class="cm"># Marketing &amp; Ads</span>
+                    ├── <span class="file">integrations.html</span> <span class="cm"># Integrations</span>
+                    ├── <span class="file">settings.html</span> <span class="cm"># Settings</span>
+                    └── <span class="file">support.html</span> <span class="cm"># Help &amp; Support</span>
+                </div>
+            </div>
+
+            <!-- Quick Start -->
+            <div class="doc-section" id="quickstart">
+                <h2>Quick Start</h2>
+                <p>1. Unzip the downloaded package into your project root.</p>
+                <p>2. Open <code>index.html</code> in your browser — everything works out of the box.</p>
+                <p>3. To serve locally:</p>
+                <div class="doc-code"><span class="kw">npx</span> serve .
+                    <span class="cm"># or with Python:</span>
+                    <span class="kw">python</span> -m http.server 8080
+                </div>
+                <p>4. To customize branding, open <code>assets/css/style.css</code> and edit the CSS variables under
+                    <code>:root</code>.</p>
+            </div>
+
+            <!-- Colors -->
+            <div class="doc-section" id="colors">
+                <h2>Colors &amp; Design Tokens</h2>
+                <p>All colors are defined as CSS custom properties inside <code>:root</code> (dark theme) and
+                    <code>[data-theme="light"]</code> (light theme overrides). This makes theming straightforward
+                    without touching component styles.</p>
+                <div class="doc-code"><span class="cm">/* Core palette — assets/css/style.css */</span>
+                    <span class="kw">:root</span> {
+                    <span class="cm">/* Gold accent */</span>
+                    --gold-primary: <span class="str">#c49c5a</span>;
+                    --gold-dim: <span class="str">#a07a3e</span>;
+                    --gold-light: <span class="str">#d4b070</span>;
+
+                    <span class="cm">/* Background layers */</span>
+                    --bg-primary: <span class="str">#0e1016</span>; <span class="cm">/* page bg */</span>
+                    --bg-secondary: <span class="str">#13161e</span>; <span class="cm">/* sidebar bg */</span>
+                    --bg-elevated: <span class="str">#1a1d27</span>; <span class="cm">/* elevated elements */</span>
+                    --card-bg: <span class="str">#161a24</span>;
+
+                    <span class="cm">/* Status colors */</span>
+                    --success: <span class="str">#4ade80</span>;
+                    --warning: <span class="str">#fbbf24</span>;
+                    --danger: <span class="str">#f87171</span>;
+                    --info: <span class="str">#60a5fa</span>;
+                    }
+                </div>
+
+                <h3>Changing the Accent Color</h3>
+                <p>Replace all three <code>--gold-*</code> variables to switch the accent color across the entire UI:
+                </p>
+                <div class="doc-code"><span class="cm">/* Example: switch to indigo accent */</span>
+                    <span class="kw">:root</span> {
+                    --gold-primary: <span class="str">#818cf8</span>;
+                    --gold-dim: <span class="str">#6366f1</span>;
+                    --gold-light: <span class="str">#a5b4fc</span>;
+                    }
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div class="doc-section" id="typography">
+                <h2>Typography</h2>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Usage</th>
+                            <th>Font</th>
+                            <th>Weight</th>
+                            <th>Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Page titles, brand name</td>
+                            <td>Playfair Display</td>
+                            <td>700</td>
+                            <td>1.6–2.4rem</td>
+                        </tr>
+                        <tr>
+                            <td>Body, labels, inputs</td>
+                            <td>Inter</td>
+                            <td>400–600</td>
+                            <td>0.8–0.95rem</td>
+                        </tr>
+                        <tr>
+                            <td>KPI values</td>
+                            <td>Inter</td>
+                            <td>800</td>
+                            <td>2–2.4rem</td>
+                        </tr>
+                        <tr>
+                            <td>Muted meta / labels</td>
+                            <td>Inter</td>
+                            <td>400–500</td>
+                            <td>0.7–0.78rem</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Themes -->
+            <div class="doc-section" id="themes">
+                <h2>Dark / Light Mode</h2>
+                <p>Theme state is controlled by the <code>data-theme</code> attribute on <code>&lt;html&gt;</code>. The
+                    toggle button in the header switches this attribute and saves the preference in
+                    <code>localStorage</code>.</p>
+                <div class="doc-code"><span class="cm">/* Force light mode on load: */</span>
+                    &lt;<span class="kw">html</span> <span class="str">data-theme=</span><span
+                        class="str">"light"</span>&gt;
+
+                    <span class="cm">/* Or initialize via JS: */</span>
+                    <span class="kw">document</span>.documentElement.setAttribute(<span class="str">'data-theme'</span>,
+                    <span class="str">'light'</span>);
+                </div>
+                <div class="doc-alert warn"><strong>⚠️ Note:</strong> chart colors are recalculated after theme changes.
+                    The <code>getChartColors()</code> helper in <code>app.js</code> reads CSS variables at runtime —
+                    re-render charts on theme change if updating dynamically.</div>
+            </div>
+
+            <!-- Layout -->
+            <div class="doc-section" id="layout">
+                <h2>Layout Grid</h2>
+                <p>Velora uses a custom CSS grid system. Utility classes:</p>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Columns</th>
+                            <th>Gap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>.grid-2</code></td>
+                            <td>2</td>
+                            <td>20px</td>
+                        </tr>
+                        <tr>
+                            <td><code>.grid-3</code></td>
+                            <td>3</td>
+                            <td>20px</td>
+                        </tr>
+                        <tr>
+                            <td><code>.grid-4</code></td>
+                            <td>4</td>
+                            <td>20px</td>
+                        </tr>
+                        <tr>
+                            <td><code>.kpi-grid</code></td>
+                            <td>auto-fill, min 200px</td>
+                            <td>16px</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>On mobile (&lt; 768 px), all grids collapse to a single column automatically.</p>
+            </div>
+
+            <!-- Cards -->
+            <div class="doc-section" id="cards">
+                <h2>Cards</h2>
+                <div class="doc-code">&lt;<span class="kw">div</span> <span class="str">class=</span><span
+                        class="str">"card"</span>&gt;
+                    &lt;<span class="kw">div</span> <span class="str">class=</span><span
+                        class="str">"card-header"</span>&gt;
+                    &lt;<span class="kw">div</span>&gt;
+                    &lt;<span class="kw">div</span> <span class="str">class=</span><span
+                        class="str">"card-title"</span>&gt;Title&lt;/<span class="kw">div</span>&gt;
+                    &lt;<span class="kw">div</span> <span class="str">class=</span><span
+                        class="str">"card-subtitle"</span>&gt;Subtitle&lt;/<span class="kw">div</span>&gt;
+                    &lt;/<span class="kw">div</span>&gt;
+                    <span class="cm">&lt;!-- optional header actions --&gt;</span>
+                    &lt;/<span class="kw">div</span>&gt;
+                    <span class="cm">&lt;!-- card content --&gt;</span>
+                    &lt;/<span class="kw">div</span>&gt;
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="doc-section" id="charts">
+                <h2>Charts (ApexCharts)</h2>
+                <p>Charts are initialized in both inline <code>&lt;script&gt;</code> blocks per page and in
+                    <code>assets/js/charts.js</code> for the main overview. Always target an element ID and call
+                    <code>.render()</code>.</p>
+                <div class="doc-code"><span class="cm">// Minimal ApexCharts line chart</span>
+                    <span class="kw">new</span> ApexCharts(document.getElementById(<span class="str">'myChart'</span>),
+                    {
+                    chart: { type: <span class="str">'line'</span>, height: 220 },
+                    series: [{ name: <span class="str">'Sales'</span>, data: [30, 40, 35, 50, 49, 60] }],
+                    colors: [<span class="str">'#c49c5a'</span>],
+                    stroke: { curve: <span class="str">'smooth'</span>, width: 2 },
+                    tooltip: { theme: <span class="str">'dark'</span> },
+                    }).render();
+                </div>
+                <p>Use <code>window.VeloraApp?.getChartColors()</code> to get theme-aware color tokens (grid color, text
+                    color, etc.) for consistent styling across themes.</p>
+            </div>
+
+            <!-- Tables -->
+            <div class="doc-section" id="tables">
+                <h2>Data Tables</h2>
+                <p>Wrap any <code>&lt;table class="data-table"&gt;</code> with
+                    <code>&lt;div class="table-wrapper"&gt;</code> to enable horizontal scrolling on mobile. Enable
+                    pagination with:</p>
+                <div class="doc-code"><span class="cm">// Enable pagination: tableId, rowsPerPage</span>
+                    window.VeloraApp?.initPagination(<span class="str">'myTable'</span>, 8);</div>
+                <p>Add a <code>&lt;div class="pagination" id="myTablePagination"&gt;&lt;/div&gt;</code> immediately
+                    after the table wrapper for pagination controls to render.</p>
+            </div>
+
+            <!-- Modals -->
+            <div class="doc-section" id="modals">
+                <h2>Modals</h2>
+                <div class="doc-code">&lt;<span class="kw">div</span> <span class="str">class=</span><span
+                        class="str">"modal-overlay"</span> <span class="str">id=</span><span
+                        class="str">"myModal"</span>&gt;
+                    &lt;<span class="kw">div</span> <span class="str">class=</span><span class="str">"modal"</span>&gt;
+                    &lt;<span class="kw">div</span> <span class="str">class=</span><span
+                        class="str">"modal-header"</span>&gt;
+                    &lt;<span class="kw">span</span> <span class="str">class=</span><span
+                        class="str">"modal-title"</span>&gt;Title&lt;/<span class="kw">span</span>&gt;
+                    &lt;<span class="kw">div</span> <span class="str">class=</span><span
+                        class="str">"modal-close"</span> <span class="str">data-modal-close=</span><span
+                        class="str">"myModal"</span>&gt;✕&lt;/<span class="kw">div</span>&gt;
+                    &lt;/<span class="kw">div</span>&gt;
+                    <span class="cm">&lt;!-- content --&gt;</span>
+                    &lt;/<span class="kw">div</span>&gt;
+                    &lt;/<span class="kw">div</span>&gt;
+
+                    <span class="cm">&lt;!-- Trigger --&gt;</span>
+                    &lt;<span class="kw">button</span> <span class="str">data-modal-open=</span><span
+                        class="str">"myModal"</span>&gt;Open&lt;/<span class="kw">button</span>&gt;
+                </div>
+            </div>
+
+            <!-- Badges -->
+            <div class="doc-section" id="badges">
+                <h2>Badges &amp; Alerts</h2>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Color</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>.badge.badge-success</code></td>
+                            <td>Green</td>
+                            <td>Fulfilled, In Stock, Low risk</td>
+                        </tr>
+                        <tr>
+                            <td><code>.badge.badge-warning</code></td>
+                            <td>Amber</td>
+                            <td>Pending, Low stock</td>
+                        </tr>
+                        <tr>
+                            <td><code>.badge.badge-danger</code></td>
+                            <td>Red</td>
+                            <td>Refunded, Critical, High risk</td>
+                        </tr>
+                        <tr>
+                            <td><code>.badge.badge-info</code></td>
+                            <td>Blue</td>
+                            <td>New, Scheduled</td>
+                        </tr>
+                        <tr>
+                            <td><code>.badge.badge-gold</code></td>
+                            <td>Gold</td>
+                            <td>High-value, Best performing</td>
+                        </tr>
+                        <tr>
+                            <td><code>.kpi-badge.up</code></td>
+                            <td>Green</td>
+                            <td>Positive metric change</td>
+                        </tr>
+                        <tr>
+                            <td><code>.kpi-badge.down</code></td>
+                            <td>Red</td>
+                            <td>Negative metric change</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pages -->
+            <div class="doc-section" id="pages-list">
+                <h2>Page Reference</h2>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>File</th>
+                            <th>Section</th>
+                            <th>Key Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>index.html</code></td>
+                            <td>Overview</td>
+                            <td>KPI cards, revenue chart, funnel, products table</td>
+                        </tr>
+                        <tr>
+                            <td><code>pages/revenue.html</code></td>
+                            <td>Revenue Analytics</td>
+                            <td>Area chart, channel donut, revenue table</td>
+                        </tr>
+                        <tr>
+                            <td><code>pages/orders.html</code></td>
+                            <td>Orders &amp; Products</td>
+                            <td>Order table, status badges, new-order modal</td>
+                        </tr>
+                        <tr>
+                            <td><code>pages/customers.html</code></td>
+                            <td>Customers</td>
+                            <td>Segmentation table, donut, geo distribution</td>
+                        </tr>
+                        <tr>
+                            <td><code>pages/conversion.html</code></td>
+                            <td>Conversion Insights</td>
+                            <td>Animated funnel, trend chart, device breakdown</td>
+                        </tr>
+                        <tr>
+                            <td><code>pages/inventory.html</code></td>
+                            <td>Inventory Control</td>
+                            <td>Alert cards, turnover chart, restock predictions</td>
+                        </tr>
+                        <tr>
+                            <td><code>pages/marketing.html</code></td>
+                            <td>Marketing &amp; Ads</td>
+                            <td>Channel cards, bar chart, radar, campaign table</td>
+                        </tr>
+                        <tr>
+                            <td><code>pages/integrations.html</code></td>
+                            <td>Integrations</td>
+                            <td>Connected services, available integrations grid</td>
+                        </tr>
+                        <tr>
+                            <td><code>pages/settings.html</code></td>
+                            <td>Settings</td>
+                            <td>Profile, notifications, security, billing, API keys</td>
+                        </tr>
+                        <tr>
+                            <td><code>pages/support.html</code></td>
+                            <td>Support</td>
+                            <td>FAQ accordion, ticket form, live chat shortcut</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Credits -->
+            <div class="doc-section" id="credits">
+                <h2>Credits</h2>
+                <ul>
+                    <li><a href="https://apexcharts.com" style="color:var(--gold-dim)">ApexCharts</a> – MIT License</li>
+                    <li><a href="https://fontawesome.com" style="color:var(--gold-dim)">Font Awesome 6</a> – Icons
+                        (Free)</li>
+                    <li><a href="https://fonts.google.com" style="color:var(--gold-dim)">Google Fonts</a> – Inter &amp;
+                        Playfair Display (OFL)</li>
+                </ul>
+            </div>
+
+            <!-- Changelog -->
+            <div class="doc-section" id="changelog">
+                <h2>Changelog</h2>
+                <div class="changelog-entry">
+                    <div><span class="changelog-version">v1.0.0</span><span class="changelog-date">– February
+                            2026</span></div>
+                    <ul class="changelog-list">
+                        <li>Initial release with 10 fully built pages</li>
+                        <li>Dark / light theme with localStorage persistence</li>
+                        <li>16+ ApexCharts integrations including sparklines, area, donut, bar, and radar charts</li>
+                        <li>Animated purchase funnel and progress bars</li>
+                        <li>Collapsible sidebar, sticky header, notification panel, and modal system</li>
+                        <li>Paginated data tables with filter controls</li>
+                        <li>RTL-ready CSS architecture</li>
+                        <li>Full documentation page</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="padding-top:32px;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.82rem">
+                Velora Dashboard by <span style="color:var(--gold-dim);font-weight:600">Velora UI</span> · Released on
+                ThemeForest under Extended License
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <style>
+        /* anchor scroll highlight */
+        .doc-main :target {
+            animation: docHl 0.8s ease;
+        }
+
+        @keyframes docHl {
+            0% {
+                background: rgba(196, 156, 90, 0.08)
+            }
+
+            100% {
+                background: transparent
+            }
+        }
+    </style>
+</body>
+
+</html>
