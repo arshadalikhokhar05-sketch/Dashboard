@@ -1,8 +1,9 @@
  Arshad Ali – Executive E-Commerce Intelligence Dashboard
 
 Arshad Ali Executive E-Commerce Intelligence Dashboard is a premium, executive-level analytics dashboard template built with HTML5, CSS3, Bootstrap 5, and modern chart libraries.
-
+Note: (Dash) folder for the previwe images of this dashboard you can check the preview.
 Designed for online store owners, agencies, and analysts, this dashboard provides a complete analytics suite for monitoring performance, sales, customers, and marketing campaigns.
+
 
 🚀Features
 
